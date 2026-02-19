@@ -150,7 +150,7 @@ export class Game {
     }
 
     updateUI() {
-        this.scoreValueEl.innerText = this.score.toString();
+        this.scoreValueEl.innerText = Math.floor(this.score).toString();
         const healthPct = Math.max(0, (this.player.health / this.player.maxHealth) * 100);
         this.healthBarEl.style.width = `${healthPct}%`;
 
@@ -391,6 +391,7 @@ export class Game {
 
     triggerGameOver() {
         this.gameOver = true;
+        this.score = Math.floor(this.score); // Guarantee integer for display and submission
         this.finalScoreEl.innerText = this.score.toString();
         this.gameOverScreenEl.classList.remove('hidden');
         this.submitAndFetchScores();
