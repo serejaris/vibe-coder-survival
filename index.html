@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Coder: Survival</title>
+</head>
+
+<body>
+  <div id="startScreen" class="fullscreen-overlay">
+    <h1>Vibe Coder: Survival</h1>
+    <p>Enter your Handle to begin Wipe Coding</p>
+    <input type="text" id="nicknameInput" placeholder="xXSlayerXx / @serejaris" maxlength="20" />
+    <button id="startBtn">Start Coding</button>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+  <div id="uiLayer">
+    <div id="hud">
+      <div id="healthBarContainer">
+        <div id="healthBar"></div>
+      </div>
+      <div id="xpBarContainer">
+        <div id="xpBar"></div>
+      </div>
+      <div class="stats">
+        <div id="levelDisplay">Lvl: <span id="levelValue">1</span></div>
+        <div id="scoreDisplay">Score: <span id="scoreValue">0</span></div>
+      </div>
+    </div>
+    <div id="gameOverScreen" class="hidden fullscreen-overlay">
+      <h1>SYSTEM FAILURE</h1>
+      <p>Lines written: <span id="finalScore">0</span></p>
+
+      <div id="leaderboardContainer">
+        <h3>Global Top Coders</h3>
+        <table id="leaderboardTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Handle</th>
+              <th>Lines</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <!-- Inserted via JS -->
+          </tbody>
+        </table>
+        <p id="leaderboardLoading">Loading scores...</p>
+      </div>
+
+      <button id="restartBtn">Wipe & Reboot</button>
+    </div>
+    <div id="levelUpScreen" class="hidden fullscreen-overlay">
+      <h1>LEVEL UP!</h1>
+      <p>Select your Vibe Coder Perk:</p>
+      <div id="perksContainer">
+        <!-- Perks will be injected here via JS -->
+        <div class="perk-card" onclick="game.resumeGame()">
+          <h3>Skill Placeholder</h3>
+          <p>Select me to continue for now until perks are implemented.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
