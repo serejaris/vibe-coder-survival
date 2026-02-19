@@ -1,4 +1,5 @@
 import { Game } from './Game';
+import { Bullet } from './Bullet';
 
 export type PerkType =
     | 'GodTierPrompt'
@@ -120,13 +121,10 @@ export class PerkManager {
                 const by = this.game.player.y;
                 const angleToEnemy = Math.atan2(target.y - by, target.x - bx);
 
-                // Create auto-bullet, maybe smaller or different color
-                this.game.bullets.push({
-                    ...new (this.game as any).BulletTemplate(bx, by, angleToEnemy), // Hacky cast, will fix in proper import
-                    color: '#00ffff',
-                    radius: 2,
-                    isDroneBullet: true
-                } as any);
+                // Create auto-bullet, smaller radius, cyan color
+                this.game.bullets.push(
+                    new Bullet(bx, by, angleToEnemy, 1, 0.66, '#00ffff', true)
+                );
             }
         }
 
